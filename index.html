@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#f4f1e9" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#d9dfd1" />
     <meta
       name="description"
-      content="Punch in. Pretend to work. Become the office's most harmless menace."
+      content="Explore a tiny 3D office, work a 9-to-5, and get away with harmless office mischief."
     />
-    <title>Office Hours — Your questionable career starts now</title>
+    <title>Office Hours — The whole office is a game</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,190 +16,17 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
-    <script src="scene3d.js" defer></script>
     <script src="game.js" defer></script>
   </head>
   <body>
-    <main class="game-shell">
-      <header class="topbar">
-        <a class="wordmark" href="#" aria-label="Office Hours home">
-          <span class="wordmark-icon">O.</span> OFFICE HOURS
-        </a>
-        <div class="topbar-right">
-          <span class="shift-tag"><span class="status-dot"></span> SHIFT IN PROGRESS</span>
-          <button class="reset-button" id="reset-button" type="button" title="Start a new day">
-            ↻ <span>New day</span>
-          </button>
-        </div>
-      </header>
-
-      <section class="game-layout" aria-label="Office simulator">
-        <div class="main-column">
-          <section class="intro">
-            <div class="eyebrow"><span class="eyebrow-line"></span> A PERFECTLY NORMAL WORKDAY</div>
-            <h1>Rise. Grind.<br /><span>Do crimes.</span></h1>
-            <p class="intro-copy">It's 9 AM. You're underpaid, over-caffeinated, and technically on the clock. Make it to five without getting caught.</p>
-          </section>
-
-          <section class="scene-card" aria-label="Interactive 3D office">
-            <div class="scene-toolbar">
-              <span class="scene-title"><span class="scene-live"></span> YOUR OFFICE, IN 3D</span>
-              <span class="scene-help">WASD TO WALK <span>·</span> DRAG TO LOOK</span>
-            </div>
-            <div class="scene-viewport" id="scene-viewport">
-              <canvas id="office-canvas" aria-label="A 3D office. Use the WASD or arrow keys to walk, or drag to look around."></canvas>
-              <div class="scene-label scene-label-window">WINDOW</div>
-              <div class="scene-label scene-label-desk">YOUR DESK</div>
-              <div class="scene-label scene-label-plant">OFFICE BOTANY</div>
-              <div class="scene-controls" aria-label="Touch movement controls">
-                <button type="button" data-move="forward" aria-label="Walk forward">↑</button>
-                <div>
-                  <button type="button" data-move="left" aria-label="Walk left">←</button>
-                  <button type="button" data-move="back" aria-label="Walk backward">↓</button>
-                  <button type="button" data-move="right" aria-label="Walk right">→</button>
-                </div>
-              </div>
-              <span class="scene-player-tag">YOU <i></i></span>
-            </div>
-            <div class="scene-caption"><span>MONDAY, 9:00 AM</span><span>THE OFFICE IS YOURS. MOSTLY.</span></div>
-          </section>
-
-          <section class="clock-card" aria-label="Workday clock">
-            <div class="clock-topline">
-              <div>
-                <span class="micro-label">MONDAY, PROBABLY</span>
-                <div class="clock-time" id="clock-time" aria-live="polite">09:00 <span>AM</span></div>
-              </div>
-              <div class="clock-right">
-                <span class="micro-label">TIME LEFT IN SHIFT</span>
-                <span class="time-left" id="time-left">8h 00m</span>
-              </div>
-            </div>
-            <div class="timeline" aria-label="Progress through the workday">
-              <div class="timeline-fill" id="timeline-fill"></div>
-              <span class="timeline-marker start"></span>
-              <span class="timeline-marker finish"></span>
-              <span class="timeline-caption caption-start">9 AM</span>
-              <span class="timeline-caption caption-finish">5 PM</span>
-            </div>
-            <div class="punchline">
-              <span class="punch-icon">✳</span>
-              <span id="status-message" aria-live="polite">New badge, same questionable morals.</span>
-            </div>
-          </section>
-
-          <section class="actions-section">
-            <div class="section-heading">
-              <div>
-                <div class="eyebrow"><span class="eyebrow-line"></span> YOUR NEXT MOVE</div>
-                <h2>How will you spend it?</h2>
-              </div>
-              <span class="choose-label">PICK ONE ACTION</span>
-            </div>
-            <div class="action-grid">
-              <button class="action-card work-card" type="button" data-action="inbox">
-                <span class="action-icon icon-inbox">▤</span>
-                <span class="action-top"><span class="action-type">THE RESPONSIBLE ONE</span><span class="action-time">1 HR</span></span>
-                <span class="action-title">Clear your inbox</span>
-                <span class="action-description">Reply “sounds good!” to absolutely everything.</span>
-                <span class="action-result">+20 work ethic <span>↗</span></span>
-              </button>
-              <button class="action-card crime-card" type="button" data-action="snacks">
-                <span class="action-icon icon-snacks">♧</span>
-                <span class="action-top"><span class="action-type">MINOR OFFICE CRIME</span><span class="action-time">30 MIN</span></span>
-                <span class="action-title">Liberate the snack drawer</span>
-                <span class="action-description">Those communal pretzels have your name on them.</span>
-                <span class="action-result">+1 snack <span>↗</span></span>
-              </button>
-              <button class="action-card work-card" type="button" data-action="meeting">
-                <span class="action-icon icon-meeting">◷</span>
-                <span class="action-top"><span class="action-type">CAREER ADVANCEMENT</span><span class="action-time">1 HR</span></span>
-                <span class="action-title">Attend a meeting</span>
-                <span class="action-description">Say “let's circle back” and nod thoughtfully.</span>
-                <span class="action-result">+15 work ethic <span>↗</span></span>
-              </button>
-              <button class="action-card crime-card" type="button" data-action="printer">
-                <span class="action-icon icon-printer">▤</span>
-                <span class="action-top"><span class="action-type">OFFICE MISCHIEF</span><span class="action-time">30 MIN</span></span>
-                <span class="action-title">Prank the printer</span>
-                <span class="action-description">Convince it every document is landscape now.</span>
-                <span class="action-result">+10 chaos <span>↗</span></span>
-              </button>
-              <button class="action-card work-card" type="button" data-action="spreadsheet">
-                <span class="action-icon icon-sheet">▦</span>
-                <span class="action-top"><span class="action-type">GREAT TEAM PLAYER</span><span class="action-time">2 HRS</span></span>
-                <span class="action-title">Fix the spreadsheet</span>
-                <span class="action-description">A pivot table? In this economy? You're a hero.</span>
-                <span class="action-result">+30 work ethic <span>↗</span></span>
-              </button>
-              <button class="action-card crime-card" type="button" data-action="plants">
-                <span class="action-icon icon-plants">❋</span>
-                <span class="action-top"><span class="action-type">BOTANICAL NONSENSE</span><span class="action-time">30 MIN</span></span>
-                <span class="action-title">Rearrange the plants</span>
-                <span class="action-description">Just a little office feng shui. Who could object?</span>
-                <span class="action-result">+5 chaos <span>↗</span></span>
-              </button>
-            </div>
-          </section>
-        </div>
-
-        <aside class="sidebar">
-          <section class="stats-card">
-            <div class="card-eyebrow"><span class="eyebrow-line"></span> EMPLOYEE PROFILE</div>
-            <div class="employee">
-              <div class="avatar" aria-hidden="true"><span>🧑‍💻</span><i></i></div>
-              <div><span class="employee-name">You, Inc.</span><span class="employee-role">Junior Menace</span></div>
-            </div>
-            <div class="stat-row">
-              <div class="stat-copy"><span class="stat-icon work-stat">↗</span><span>Work ethic</span></div>
-              <strong id="work-score">0<span> / 100</span></strong>
-            </div>
-            <div class="progress-track"><div class="progress-bar work-progress" id="work-progress"></div></div>
-            <div class="stat-row suspicion-row">
-              <div class="stat-copy"><span class="stat-icon suspicion-stat">◉</span><span>Suspicion</span></div>
-              <strong id="suspicion-score">0<span> / 100</span></strong>
-            </div>
-            <div class="progress-track"><div class="progress-bar suspicion-progress" id="suspicion-progress"></div></div>
-            <div class="heat-message" id="heat-message"><span class="heat-icon">✦</span> You're flying under the radar.</div>
-          </section>
-
-          <section class="log-card">
-            <div class="log-heading">
-              <div class="card-eyebrow"><span class="eyebrow-line"></span> THE PAPER TRAIL</div>
-              <span class="live-indicator"><i></i> LIVE</span>
-            </div>
-            <div class="log-entries" id="log-entries" aria-live="polite">
-              <div class="log-entry">
-                <span class="log-time">09:00</span>
-                <span class="log-dot log-dot-start"></span>
-                <span class="log-text">Clocked in. They have no idea.</span>
-              </div>
-            </div>
-            <div class="log-footer">YOUR ACTIVITY IS DEFINITELY <em>NOT</em> MONITORED</div>
-          </section>
-
-          <div class="tip-card"><span class="tip-icon">✳</span><p><strong>Pro tip:</strong> Do some actual work between your extremely legitimate business activities.</p></div>
-        </aside>
-      </section>
-
-      <footer class="footer"><span>OFFICE HOURS © 2026</span><span>ANY RESEMBLANCE TO YOUR ACTUAL JOB IS PROBABLY A COINCIDENCE.</span><span>TAKE YOUR LUNCH BREAK. YOU'VE EARNED IT.</span></footer>
+    <main class="game" aria-label="Office Hours 3D office game">
+      <canvas
+        id="office-canvas"
+        tabindex="0"
+        aria-label="Interactive 3D office. Walk using WASD or arrow keys, drag to look around, and click an office station to take an action."
+      ></canvas>
+      <div id="accessible-status" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+      <noscript>This game needs JavaScript. Please enable it and reload.</noscript>
     </main>
-
-    <div class="modal-backdrop" id="modal-backdrop" hidden>
-      <section class="result-modal" role="dialog" aria-modal="true" aria-labelledby="result-title">
-        <div class="result-icon" id="result-icon">✦</div>
-        <div class="eyebrow"><span class="eyebrow-line"></span> SHIFT COMPLETE</div>
-        <h2 id="result-title">You survived the workday.</h2>
-        <p id="result-copy"></p>
-        <div class="final-stats">
-          <div><span>WORK ETHIC</span><strong id="final-work">0 / 100</strong></div>
-          <div><span>SUSPICION</span><strong id="final-suspicion">0 / 100</strong></div>
-          <div><span>SNACKS SECURED</span><strong id="final-snacks">0</strong></div>
-        </div>
-        <button class="restart-button" id="restart-button" type="button">Clock in again <span>↗</span></button>
-      </section>
-    </div>
-
-    <noscript>This game needs JavaScript to run. Please enable JavaScript and refresh the page.</noscript>
   </body>
 </html>
