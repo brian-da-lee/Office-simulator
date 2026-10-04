@@ -16,27 +16,10 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <script src="scene3d.js" defer></script>
     <script src="game.js" defer></script>
   </head>
   <body>
-    <div class="desk-scene" aria-hidden="true">
-      <div class="sun"></div>
-      <div class="window">
-        <div class="window-sky"></div>
-        <div class="window-building building-one"></div>
-        <div class="window-building building-two"></div>
-        <div class="window-building building-three"></div>
-        <div class="window-crossbar"></div>
-      </div>
-      <div class="plant plant-back"><span></span><span></span><span></span></div>
-      <div class="desk"></div>
-      <div class="plant plant-front"><span></span><span></span><span></span></div>
-      <div class="coffee-cup"><span>☕</span></div>
-      <div class="monitor"><div class="monitor-screen"><span>Make it look busy.</span></div></div>
-      <div class="monitor-stand"></div>
-      <div class="sticky-note">you got this!</div>
-    </div>
-
     <main class="game-shell">
       <header class="topbar">
         <a class="wordmark" href="#" aria-label="Office Hours home">
@@ -56,6 +39,29 @@
             <div class="eyebrow"><span class="eyebrow-line"></span> A PERFECTLY NORMAL WORKDAY</div>
             <h1>Rise. Grind.<br /><span>Do crimes.</span></h1>
             <p class="intro-copy">It's 9 AM. You're underpaid, over-caffeinated, and technically on the clock. Make it to five without getting caught.</p>
+          </section>
+
+          <section class="scene-card" aria-label="Interactive 3D office">
+            <div class="scene-toolbar">
+              <span class="scene-title"><span class="scene-live"></span> YOUR OFFICE, IN 3D</span>
+              <span class="scene-help">WASD TO WALK <span>·</span> DRAG TO LOOK</span>
+            </div>
+            <div class="scene-viewport" id="scene-viewport">
+              <canvas id="office-canvas" aria-label="A 3D office. Use the WASD or arrow keys to walk, or drag to look around."></canvas>
+              <div class="scene-label scene-label-window">WINDOW</div>
+              <div class="scene-label scene-label-desk">YOUR DESK</div>
+              <div class="scene-label scene-label-plant">OFFICE BOTANY</div>
+              <div class="scene-controls" aria-label="Touch movement controls">
+                <button type="button" data-move="forward" aria-label="Walk forward">↑</button>
+                <div>
+                  <button type="button" data-move="left" aria-label="Walk left">←</button>
+                  <button type="button" data-move="back" aria-label="Walk backward">↓</button>
+                  <button type="button" data-move="right" aria-label="Walk right">→</button>
+                </div>
+              </div>
+              <span class="scene-player-tag">YOU <i></i></span>
+            </div>
+            <div class="scene-caption"><span>MONDAY, 9:00 AM</span><span>THE OFFICE IS YOURS. MOSTLY.</span></div>
           </section>
 
           <section class="clock-card" aria-label="Workday clock">

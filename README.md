@@ -2,6 +2,10 @@
 
 A tiny, self-contained office-simulator game. Clock in at 9, balance actual work with cartoonishly harmless office mischief, and make it to 5 without drawing too much suspicion.
 
+## Controls
+
+Walk around the 3D office with **WASD** or the **arrow keys**. Drag the office scene to orbit the camera; on smaller screens, use the on-screen movement controls. Choose work and mischief actions below the scene to advance your shift.
+
 ## Play locally
 
 Open `index.html` in a browser. No build step, dependencies, or server are required.

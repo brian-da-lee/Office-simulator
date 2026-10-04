@@ -132,6 +132,7 @@ function addLog(action) {
 function finishDay() {
   state.finished = true;
   elements.buttons.forEach((button) => { button.disabled = true; });
+  window.officeScene?.perform("finish");
   document.querySelector(".shift-tag").innerHTML = '<span class="status-dot"></span> SHIFT COMPLETE';
   document.querySelector("#final-work").textContent = `${state.work} / 100`;
   document.querySelector("#final-suspicion").textContent = `${state.suspicion} / 100`;
@@ -173,6 +174,7 @@ function takeAction(actionName) {
   state.suspicion = Math.min(100, state.suspicion + action.suspicion);
   state.snacks += action.snacks || 0;
   state.status = action.status;
+  window.officeScene?.perform(actionName);
   updateDisplay();
   addLog(action);
 
@@ -186,6 +188,7 @@ function startNewDay() {
   state.snacks = 0;
   state.finished = false;
   state.status = "New badge, same questionable morals.";
+  window.officeScene?.reset();
   document.querySelector(".shift-tag").innerHTML = '<span class="status-dot"></span> SHIFT IN PROGRESS';
   elements.log.replaceChildren();
   elements.modal.hidden = true;
